@@ -1,0 +1,8 @@
+package com.example.kmmconfdemoapp.shared
+
+
+class Greeting {
+    fun greeting(): String {
+        return "Hello, ${Platform().platform}!"
+    }
+}

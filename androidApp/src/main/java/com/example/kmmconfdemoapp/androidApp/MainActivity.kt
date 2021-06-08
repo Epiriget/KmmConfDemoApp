@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.kmmconfdemoapp.shared.Greeting
 import android.widget.TextView
+import com.example.kmmconfdemoapp.shared.CoroutineRandomizer
+import kotlinx.coroutines.runBlocking
 
 fun greet(): String {
     return Greeting().greeting()
@@ -14,7 +16,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = greet()
+        val textView: TextView = findViewById(R.id.text_view)
+
+        var text: String = ""
+        val randomizer = CoroutineRandomizer()
+        runBlocking {
+            text = randomizer.generate()
+        }
     }
 }

@@ -2,7 +2,12 @@ import SwiftUI
 import shared
 
 func greet() -> String {
-    return Greeting().greeting()
+    var number: String? = nil
+    let randomizer = CoroutineRandomizer()
+    randomizer.generate() { result, error in
+        number = result as String?
+    }
+    return number == nil ? "EMPTY" : number!
 }
 
 struct ContentView: View {

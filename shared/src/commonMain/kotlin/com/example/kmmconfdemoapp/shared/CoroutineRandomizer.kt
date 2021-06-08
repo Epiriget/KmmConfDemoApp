@@ -7,6 +7,7 @@ import kotlin.random.Random
 class CoroutineRandomizer {
     var counter: Int = MIN_VALUE
 
+    @Throws(Exception::class)
     suspend fun generate() = CoroutineScope(Dispatchers.Main).async {
         counter += Random(MAX_VALUE).nextInt()
         delay(DELAY_MS)

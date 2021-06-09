@@ -10,11 +10,12 @@ class CoroutineRandomizer {
 
 
     @Throws(Exception::class)
-    suspend fun generate() = withContext(NSLooperDispatcher) {
-        counter += Random(MAX_VALUE).nextInt()
-        delay(DELAY_MS)
-        counter.toString()
-    }
+    suspend fun generate() =
+        withContext(NSLooperDispatcher) {
+            counter += Random(MAX_VALUE).nextInt() % 10
+            delay(DELAY_MS)
+            counter.toString()
+        }
 
 
     companion object {

@@ -4,10 +4,8 @@ import shared
 func greet() -> String {
     var number: String? = nil
     let randomizer = CoroutineRandomizer()
-    DispatchQueue.global(qos: .utility).async {
-        randomizer.generate() { result, error in
-            number = result as String?
-        }
+    randomizer.generate() { result, error in
+        number = result as String?
     }
     return number == nil ? "EMPTY" : number!
 }

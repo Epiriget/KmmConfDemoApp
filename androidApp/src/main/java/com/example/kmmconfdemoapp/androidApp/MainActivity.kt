@@ -23,5 +23,6 @@ class MainActivity : AppCompatActivity() {
         runBlocking {
             text = randomizer.generate()
         }
+        textView.text = text
     }
 }

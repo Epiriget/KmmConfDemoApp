@@ -6,7 +6,7 @@ import platform.Foundation.NSRunLoop
 import platform.Foundation.performBlock
 import kotlin.coroutines.CoroutineContext
 
-actual object NSLooperDispatcher: CoroutineDispatcher() {
+actual class NSLooperDispatcher actual constructor(): CoroutineDispatcher() {
     override fun dispatch(context: CoroutineContext, block: Runnable) {
         NSRunLoop.mainRunLoop.performBlock {
             block.run()

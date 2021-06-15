@@ -1,20 +1,16 @@
 package com.example.kmmconfdemoapp.shared
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import kotlin.random.Random
-
 
 class CoroutineRandomizer {
     var counter: Int = MIN_VALUE
 
-
     @Throws(Exception::class)
     suspend fun generate() =
-        withContext(Dispatchers.Default) {
+        withContext(NSLooperDispatcher()) {
             counter += Random(MAX_VALUE).nextInt() % 10
-            delay(DELAY_MS)
+//            delay(DELAY_MS)
             counter.toString()
         }
 
